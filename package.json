@@ -1,0 +1,27 @@
+{
+  "name": "pringles",
+  "version": "0.0.1",
+  "description": "Pringles deliciously evaluates dynamic web pages and returns the evaluation as a stream.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/v0lkan/pringles.git"
+  },
+  "keywords": [
+    "render",
+    "streams",
+    "evaluation",
+    "dynamic",
+    "chips",
+    "pringles",
+    "phantomjs"
+  ],
+  "author": "Volkan Özçelik <volkan@o2js.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/v0lkan/pringles/issues"
+  }
+}
