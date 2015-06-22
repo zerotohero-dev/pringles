@@ -9,6 +9,21 @@ SRC_DIR=$CWD$SRC_SUFFIX;
 DEST_DIR=$CWD$DEST_SUFFIX;
 
 mkdir -p $DEST_DIR'/phantom';
+mkdir -p $DEST_DIR'/phantom/handlers';
+mkdir -p $DEST_DIR'/phantom/init';
+mkdir -p $DEST_DIR'/phantom/io';
 
-touch -f $DEST_DIR'/phantom/fetch.js';
-babel $SRC_DIR'/phantom/fetch.js' > $DEST_DIR'/phantom/fetch.js';
+PATHS=(
+    '/fetch.js'
+    '/handlers/index.js'
+    '/init/index.js'
+    '/io/index.js'
+);
+
+for path in ${PATHS[*]}; do
+    babel $SRC_DIR'/phantom'$path > $DEST_DIR'/phantom'$path;
+
+    echo '[CONVERTED]: ' $path;
+done
+
+echo '[ALL DONE]';
