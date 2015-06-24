@@ -34,9 +34,12 @@ inherits(FetchStream, Readable);
 FetchStream.prototype.detach = () => {
     if (this.isDetached()) {return;}
 
-    this[PRIVATE].process.stdout.destroy();
+    // End gracefully, instead of `destroy`ing.
+    this[PRIVATE].process.stdout.end();
+    this[PRIVATE].process.kill();
     this[PRIVATE].process = null;
 
+    // Raises and 'end' event.
     this.push(null);
 };
 
@@ -44,11 +47,10 @@ FetchStream.prototype.isDetached = () => {
     return !this[PRIVATE].process;
 };
 
-FetchStream.prototype.endFetch = () => {
+FetchStream.prototype.end = () => {
     if (this.isDetached()) {return;}
 
     this.detach();
-    this[PRIVATE].process.stdout.kill();
 };
 
 FetchStream.prototype._read = function(size) {
@@ -59,4 +61,6 @@ FetchStream.prototype._read = function(size) {
     this[PRIVATE].process.stdout.resume();
 };
 
-export default FetchStream;
+let create = (url) => new FetchStream({url: url});
+
+export default create;

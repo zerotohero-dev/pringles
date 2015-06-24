@@ -10,11 +10,11 @@ let listen = (owner, ownedStream) => {
     ownedStream.on('error', (err) => {
         owner.emit('error', err);
 
-        owner.endFetch();
+        owner.end();
     });
 
     ownedStream.on('end', () => {
-        owner.endFetch();
+        owner.end();
     });
 };
 

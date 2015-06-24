@@ -1,27 +1,42 @@
 #!/usr/bin/env bash
 
+# TODO: why bash? you can write this in Node.JS too.
+# check if babel cam do this already:
+# 1. clear out folder
+# 2. traverse the directory tree
+# 3. for each file, process it and mirror it to out.
+
 CWD=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd );
 SRC_SUFFIX='/../src';
 DEST_SUFFIX='/../out';
-#DIR = $PWD + "..";
 
 SRC_DIR=$CWD$SRC_SUFFIX;
 DEST_DIR=$CWD$DEST_SUFFIX;
 
-mkdir -p $DEST_DIR'/phantom';
-mkdir -p $DEST_DIR'/phantom/handlers';
-mkdir -p $DEST_DIR'/phantom/init';
-mkdir -p $DEST_DIR'/phantom/io';
+rm -rf $DEST_DIR;
+
+mkdir -p $DEST_DIR'/streams';
+mkdir -p $DEST_DIR'/streams/fetch';
+mkdir -p $DEST_DIR'/streams/fetch/init';
+mkdir -p $DEST_DIR'/streams/fetch/childprocess';
+mkdir -p $DEST_DIR'/streams/fetch/phantom';
+mkdir -p $DEST_DIR'/streams/fetch/phantom/io';
+mkdir -p $DEST_DIR'/streams/fetch/phantom/init';
+mkdir -p $DEST_DIR'/streams/fetch/phantom/handlers';
 
 PATHS=(
-    '/fetch.js'
-    '/handlers/index.js'
-    '/init/index.js'
-    '/io/index.js'
+    '/index.js'
+    '/streams/fetch/index.js'
+    '/streams/fetch/init/index.js'
+    '/streams/fetch/childprocess/index.js'
+    '/streams/fetch/phantom/index.js'
+    '/streams/fetch/phantom/io/index.js'
+    '/streams/fetch/phantom/init/index.js'
+    '/streams/fetch/phantom/handlers/index.js'
 );
 
 for path in ${PATHS[*]}; do
-    babel $SRC_DIR'/phantom'$path > $DEST_DIR'/phantom'$path;
+    babel $SRC_DIR$path > $DEST_DIR$path;
 
     echo '[CONVERTED]: ' $path;
 done
