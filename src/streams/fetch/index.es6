@@ -28,7 +28,7 @@ let FetchStream = (options) => {
 
     listen(this, this[PRIVATE].process.stdout);
 
-    setTimeout(this.endFetch.bind(this), FETCH_TIMEOUT).unref();
+    setTimeout(() => this.endFetch(), FETCH_TIMEOUT).unref();
 };
 
 inherits(FetchStream, Readable);
