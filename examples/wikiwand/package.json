@@ -1,0 +1,20 @@
+{
+  "name": "wikiwand",
+  "private": true,
+  "version": "0.0.1",
+  "description": "Evaluates a wikiwand page and writes the evaluated result to the console.",
+  "main": "run.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "pringles",
+    "web",
+    "fetch"
+  ],
+  "author": "Volkan Özçelik <volkan@o2js.com>",
+  "license": "MIT",
+  "dependencies": {
+    "pringles": "0.0.7"
+  }
+}

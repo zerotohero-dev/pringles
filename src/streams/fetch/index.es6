@@ -14,6 +14,8 @@ const FETCH_TIMEOUT = 20000;
 const DEFAULT_PHANTOM_PATH = '/bin/phantomjs';
 
 let FetchStream = (options) => {
+
+    // TODO: FIXME: `this` is undefined here as it is borrowed from parent context.
     Readable.call(this, options);
 
     if (!options.url) {return;}

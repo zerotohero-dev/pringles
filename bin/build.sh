@@ -8,7 +8,9 @@
 
 CWD=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd );
 SRC_SUFFIX='/../src';
-DEST_SUFFIX='/../out';
+DEST_SUFFIX='/../lib';
+ES6_EXT='.es6'
+JS_EXT='.js'
 
 SRC_DIR=$CWD$SRC_SUFFIX;
 DEST_DIR=$CWD$DEST_SUFFIX;
@@ -25,18 +27,18 @@ mkdir -p $DEST_DIR'/streams/fetch/phantom/init';
 mkdir -p $DEST_DIR'/streams/fetch/phantom/handlers';
 
 PATHS=(
-    '/index.js'
-    '/streams/fetch/index.js'
-    '/streams/fetch/init/index.js'
-    '/streams/fetch/childprocess/index.js'
-    '/streams/fetch/phantom/index.js'
-    '/streams/fetch/phantom/io/index.js'
-    '/streams/fetch/phantom/init/index.js'
-    '/streams/fetch/phantom/handlers/index.js'
+    '/index'
+    '/streams/fetch/index'
+    '/streams/fetch/init/index'
+    '/streams/fetch/childprocess/index'
+    '/streams/fetch/phantom/index'
+    '/streams/fetch/phantom/io/index'
+    '/streams/fetch/phantom/init/index'
+    '/streams/fetch/phantom/handlers/index'
 );
 
 for path in ${PATHS[*]}; do
-    babel $SRC_DIR$path > $DEST_DIR$path;
+    babel $SRC_DIR$path$ES6_EXT > $DEST_DIR$path$JS_EXT;
 
     echo '[CONVERTED]: ' $path;
 done

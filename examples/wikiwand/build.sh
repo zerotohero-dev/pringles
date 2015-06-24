@@ -1,0 +1,1 @@
+babel ./run.es6 > run.js

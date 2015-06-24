@@ -1,9 +1,9 @@
 'use strict';
 
-import streamFactory from './streams/fetch';
+import createStreamFromUrl from './streams/fetch';
 
 let fetch = (url, callback) => {
-    let stream = streamFactory.create(url),
+    let stream = createStreamFromUrl(url),
         buffer = '';
 
     stream.on('data', (chunk) => {
