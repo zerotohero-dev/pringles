@@ -1,6 +1,6 @@
 {
   "name": "pringles",
-  "version": "0.0.7",
+  "version": "0.0.11",
   "description": "Pringles deliciously evaluates dynamic web pages and returns the evaluation as a stream.",
   "main": "lib/index.js",
   "scripts": {

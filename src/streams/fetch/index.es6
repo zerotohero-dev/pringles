@@ -13,9 +13,7 @@ const PRIVATE = Math.random().toString(36).replace(/[^a-z]+/g, '');
 const FETCH_TIMEOUT = 20000;
 const DEFAULT_PHANTOM_PATH = '/bin/phantomjs';
 
-let FetchStream = (options) => {
-
-    // TODO: FIXME: `this` is undefined here as it is borrowed from parent context.
+function FetchStream(options) {
     Readable.call(this, options);
 
     if (!options.url) {return;}
@@ -28,12 +26,12 @@ let FetchStream = (options) => {
 
     listen(this, this[PRIVATE].process.stdout);
 
-    setTimeout(() => this.endFetch(), FETCH_TIMEOUT).unref();
-};
+    setTimeout(() => this.end(), FETCH_TIMEOUT).unref();
+}
 
 inherits(FetchStream, Readable);
 
-FetchStream.prototype.detach = () => {
+FetchStream.prototype.detach = function() {
     if (this.isDetached()) {return;}
 
     // End gracefully, instead of `destroy`ing.
@@ -45,11 +43,11 @@ FetchStream.prototype.detach = () => {
     this.push(null);
 };
 
-FetchStream.prototype.isDetached = () => {
+FetchStream.prototype.isDetached = function() {
     return !this[PRIVATE].process;
 };
 
-FetchStream.prototype.end = () => {
+FetchStream.prototype.end = function() {
     if (this.isDetached()) {return;}
 
     this.detach();

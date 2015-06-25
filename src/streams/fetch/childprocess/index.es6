@@ -5,7 +5,7 @@ import {spawn as cSpawn} from 'child_process';
 
 let spawn = (sender, binPath, url) => {
     let child = cSpawn(binPath, [
-        join(__dirname, '../../../phantom/fetch.js'), url
+        join(__dirname, '../phantom/index.js'), url
     ]);
 
     child.on('close', (status) => {

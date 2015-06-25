@@ -4,7 +4,7 @@ let log = console.log;
 let error = console.error;
 let phantom = global.phantom;
 
-export function printPageResponse(page) {
+let printPageResponse = (page) => {
     try {
         log(page.evaluate(() => document.body.innerHTML));
     } catch(err) {
@@ -13,4 +13,6 @@ export function printPageResponse(page) {
     } finally {
         phantom.exit();
     }
-}
+};
+
+export {printPageResponse};

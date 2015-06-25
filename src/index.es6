@@ -11,13 +11,13 @@ let fetch = (url, callback) => {
     });
 
     stream.on('error', (err) => {
-        callback(null, err);
+        callback(err, null);
 
         stream.removeAllListeners();
         stream.end();
     });
 
-    stream.on('end', () => callback(buffer, null));
+    stream.on('end', () => callback(null, buffer));
 };
 
 // TODO: save to file via stream piping.

@@ -15,6 +15,6 @@
   "author": "Volkan Özçelik <volkan@o2js.com>",
   "license": "MIT",
   "dependencies": {
-    "pringles": "0.0.7"
+    "pringles": "0.0.10"
   }
 }

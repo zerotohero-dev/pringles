@@ -9,7 +9,9 @@ var _pringles2 = _interopRequireDefault(_pringles);
 (0, _pringles2['default'])('http://www.wikiwand.com/en/Entropy', function (err, data) {
     if (err) {
         console.log('An error has occured:');
-        console.log(err);
+        console.log('---' + err + '---');
+
+        console.log(data);
 
         return;
     }

@@ -7,9 +7,12 @@ let error = console.error;
 
 const WAIT_TIMEOUT = 10000;
 
-export function handlePageOpen(page, status) {
+let handlePageOpen = (page, status) => {
     if (status === 'success') {
-        setTimeout(printPageResponse(page), WAIT_TIMEOUT).unref();
+        setTimeout(
+            () => printPageResponse(page),
+            WAIT_TIMEOUT
+        ).unref();
 
         return;
     }
@@ -17,4 +20,6 @@ export function handlePageOpen(page, status) {
     error('[PRINGLES FETCH026] Unable to access network.');
 
     phantom.exit();
-}
+};
+
+export {handlePageOpen};
